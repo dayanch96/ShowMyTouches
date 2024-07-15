@@ -23,8 +23,7 @@
     if (self) {
         _main = @[
             @{@"title": @"Enable", @"icon": @"power", @"type": @"bool", @"key": @"enable", @"id": @"mainCell"},
-            @{@"title": @"OnlyRecording", @"desc": @"OnlyRecordingDesc", @"icon": @"record.circle", @"type": @"bool", @"key": @"recording", @"id": @"mainCell"},
-            @{@"title": @"AcceleratedAnimation", @"desc": @"AcceleratedAnimationDesc", @"icon": @"hare", @"type": @"bool", @"key": @"accelerated", @"id": @"mainCell"}
+            @{@"title": @"OnlyRecording", @"desc": @"OnlyRecordingDesc", @"icon": @"record.circle", @"type": @"bool", @"key": @"recording", @"id": @"mainCell"}
         ];
 
         _color = @[

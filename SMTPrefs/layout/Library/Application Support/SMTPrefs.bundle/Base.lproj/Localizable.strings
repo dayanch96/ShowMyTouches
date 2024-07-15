@@ -3,9 +3,6 @@
 "OnlyRecording" = "Only for recording";
 "OnlyRecordingDesc" = "Displays touch indicators only during screen recording";
 
-"AcceleratedAnimation" = "Accelerated animation";
-"AcceleratedAnimationDesc" = "Reduces touch animation duration. Particularly useful if you intend to type text while displaying touch animations";
-
 "TouchColor" = "Touch color";
 "BorderColor" = "Border color";
 
