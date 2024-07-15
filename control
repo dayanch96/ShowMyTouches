@@ -1,0 +1,9 @@
+Package: com.dvntm.showmytouches
+Name: ShowMyTouches
+Version: 0.0.1
+Architecture: iphoneos-arm
+Description: Displays your touch interactions!
+Maintainer: dvntm
+Author: dvntm
+Section: Tweaks
+Depends: mobilesubstrate (>= 0.9.5000)

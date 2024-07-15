@@ -1,0 +1,21 @@
+"Enable" = "Enable";
+
+"OnlyRecording" = "Only for recording";
+"OnlyRecordingDesc" = "Displays touch indicators only during screen recording";
+
+"AcceleratedAnimation" = "Accelerated animation";
+"AcceleratedAnimationDesc" = "Reduces touch animation duration. Particularly useful if you intend to type text while displaying touch animations";
+
+"TouchColor" = "Touch color";
+"BorderColor" = "Border color";
+
+"ResetSettings" = "Reset settings to defaults";
+
+"FollowMe" = "Follow me on Twitter";
+"SourceCode" = "Source code";
+
+"TipJar" = "Tip jar";
+"Donate.PayPal" = "Donate me via PayPal <3";
+
+"Support" = "Support me";
+"Donate.KoFi" = "Buy me a cup of coffee <3";
