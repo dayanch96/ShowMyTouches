@@ -38,7 +38,8 @@ BOOL isRecording(void) {
                     NSData *borderData = [[SMTUserDefaults standardUserDefaults] objectForKey:@"borderColor"];
                     UIColor *borderColor = [NSKeyedUnarchiver unarchivedObjectOfClass:[UIColor class] fromData:borderData error:nil];
 
-                    touchView = [[UIView alloc] initWithFrame:CGRectMake(touchPoint.x - 20, touchPoint.y - 20, 40, 40)];
+                    touchView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
+                    touchView.center = CGPointMake(touchPoint.x, touchPoint.y);
                     touchView.backgroundColor = touchColor;
                     touchView.layer.cornerRadius = 20;
                     touchView.layer.borderColor = borderColor.CGColor;
@@ -66,13 +67,16 @@ BOOL isRecording(void) {
             if (touch.phase == UITouchPhaseEnded || touch.phase == UITouchPhaseCancelled) {
                 touchView = objc_getAssociatedObject(touch, @"TouchView");
                 if (touchView) {
-                    CGFloat duration = smtBool(@"accelerated") ? 0.1 : 0.3;
-                    [UIView animateWithDuration:duration delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
-                        touchView.alpha = 0.0;
-                        touchView.transform = CGAffineTransformMakeScale(1.5, 1.5);
-                    } completion:^(BOOL finished) {
+                    if (smtBool(@"accelerated")) {
                         [touchView removeFromSuperview];
-                    }];
+                    } else {
+                        [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+                            touchView.alpha = 0.0;
+                            touchView.transform = CGAffineTransformMakeScale(1.5, 1.5);
+                        } completion:^(BOOL finished) {
+                            [touchView removeFromSuperview];
+                        }];
+                    }
                     objc_setAssociatedObject(touch, @"TouchView", nil, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
                 }
             }
