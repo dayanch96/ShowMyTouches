@@ -197,7 +197,11 @@
         UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
         UIColorWell *colorWell = (UIColorWell *)cell.accessoryView;
 
-        [colorWell styleRequestedColorPickerPresentation];
+        if ([colorWell respondsToSelector:@selector(styleRequestedColorPickerPresentation)]) {
+            [colorWell styleRequestedColorPickerPresentation];
+        } else {
+            [colorWell performSelector:@selector(invokeColorPicker:)];
+        }
     }
 
     if ([data[@"type"] isEqualToString:@"reset"]) {
