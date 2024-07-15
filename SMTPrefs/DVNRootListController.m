@@ -141,8 +141,15 @@
         }
 
         if ([data[@"type"] isEqualToString:@"link"]) {
-            cell.imageView.image = [UIImage imageNamed:data[@"icon"] inBundle:NSBundle.smt_defaultBundle compatibleWithTraitCollection:nil];
+            UIImage *image = [UIImage imageNamed:data[@"icon"] inBundle:NSBundle.smt_defaultBundle compatibleWithTraitCollection:nil];
+
+            cell.imageView.image = image;
             cell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage systemImageNamed:@"safari"]];
+
+            if ([data[@"icon"] isEqualToString:@"github"]) {
+                cell.imageView.image = [image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+                cell.imageView.tintColor = [UIColor labelColor];
+            }
         }
 
         return cell;
