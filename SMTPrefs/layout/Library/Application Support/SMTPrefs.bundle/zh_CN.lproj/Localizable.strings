@@ -1,0 +1,21 @@
+"Enable" = "功能启用";
+
+"OnlyRecording" = "仅录屏显示";
+"OnlyRecordingDesc" = "仅在屏幕录制期间显示触摸指示器。";
+
+"AcceleratedAnimation" = "加速动画";
+"AcceleratedAnimationDesc" = "减少触摸动画的持续时间；如果打算在显示触摸动画的同时输入文本，则此功能建议启用。";
+
+"TouchColor" = "触摸颜色";
+"BorderColor" = "边框颜色";
+
+"ResetSettings" = "重置设置";
+
+"FollowMe" = "在推特上关注我";
+"SourceCode" = "源代码";
+
+"TipJar" = "Tip jar";
+"Donate.PayPal" = "通过 PayPal 向我捐赠";
+
+"Support" = "Support me";
+"Donate.KoFi" = "请我喝杯咖啡";
