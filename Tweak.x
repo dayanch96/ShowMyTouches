@@ -29,14 +29,6 @@ BOOL isRecording(void) {
 			CGPoint touchPoint = [touch locationInView:nil];
 
 			UIView *touchView = nil;
-			UIWindow *keyWindow = nil;
-
-			NSArray *windows = [UIApplication sharedApplication].windows;
-			for (UIWindow *window in windows) {
-				if (!window.hidden && (!keyWindow || window.windowLevel > keyWindow.windowLevel)) {
-					keyWindow = window;
-				}
-			}
 
 			if (touch.phase == UITouchPhaseBegan) {
 				if (!touchView) {
@@ -55,7 +47,7 @@ BOOL isRecording(void) {
 					touchView.userInteractionEnabled = NO;
 
 					dispatch_async(dispatch_get_main_queue(), ^{
-						[keyWindow addSubview:touchView];
+						[touch.window addSubview:touchView];
 					});
 
 					objc_setAssociatedObject(touch, @"TouchView", touchView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
