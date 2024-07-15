@@ -67,7 +67,7 @@ BOOL isRecording(void) {
             if (touch.phase == UITouchPhaseEnded || touch.phase == UITouchPhaseCancelled) {
                 touchView = objc_getAssociatedObject(touch, @"TouchView");
                 if (touchView) {
-                    if (smtBool(@"accelerated")) {
+                    if (touch.tapCount > 1) {
                         [touchView removeFromSuperview];
                     } else {
                         [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
