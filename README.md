@@ -22,4 +22,4 @@ The tweak that displays visual indicators for touch interactions on the screen.
 
 
 # Credits
-Special thanks to **Artem Kasper** (@Kesa2773) for the inspiration and main hook code
+Special thanks to [**Artem Kasper** (@Kesa2773)](https://github.com/Kesa2773) for the inspiration and main hook code
