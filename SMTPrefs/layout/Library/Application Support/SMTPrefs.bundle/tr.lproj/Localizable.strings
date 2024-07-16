@@ -1,0 +1,24 @@
+"Enable" = "Etkinleştir";
+
+"OnlyRecording" = "Yalnızca kayıt için";
+"OnlyRecordingDesc" = "Dokunmatik göstergeleri yalnızca ekran kaydı sırasında görüntüler";
+
+"TouchColor" = "Dokunmatik rengi";
+"BorderColor" = "Sınır rengi";
+
+"AnimationDuration" = "Animasyon süresi";
+"TouchSize" = "Dokunma boyutu";
+"CornerRadius" = "Köşe yarıçapı";
+"BorderWidth" = "Kenarlık genişliği";
+
+"ResetSettings" = "Ayarları varsayılanlara sıfırla";
+
+"FollowMe" = "Beni Twitter'da takip edin";
+"SourceCode" = "Kaynak kodu";
+
+"TipJar" = "Bahşiş kavanozu";
+"Donate.PayPal" = "PayPal aracılığıyla bana bağış yap <3";
+
+"Support" = "Beni destekle";
+"Donate.KoFi" = "Bana bir fincan kahve al <3";
+
