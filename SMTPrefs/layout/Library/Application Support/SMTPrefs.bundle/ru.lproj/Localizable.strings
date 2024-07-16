@@ -8,7 +8,7 @@
 
 "AnimationDuration" = "Длительность анимации";
 "TouchSize" = "Размер касания";
-"CornerRadius" = "Радиус угла";
+"CornerRadius" = "Радиус углов";
 "BorderWidth" = "Ширина рамки";
 
 "ResetSettings" = "Сбросить настройки";
