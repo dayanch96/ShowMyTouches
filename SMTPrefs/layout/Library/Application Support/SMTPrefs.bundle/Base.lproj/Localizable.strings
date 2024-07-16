@@ -6,6 +6,11 @@
 "TouchColor" = "Touch color";
 "BorderColor" = "Border color";
 
+"AnimationDuration" = "Animation duration";
+"TouchSize" = "Touch size";
+"CornerRadius" = "Corner radius";
+"BorderWidth" = "Border width";
+
 "ResetSettings" = "Reset settings to defaults";
 
 "FollowMe" = "Follow me on Twitter";

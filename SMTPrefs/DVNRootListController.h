@@ -18,3 +18,7 @@
 - (void)styleRequestedColorPickerPresentation;
 - (void)invokeColorPicker:(id)colorPicker;
 @end
+
+@interface UISlider (Private)
+- (void)setShowValue:(BOOL)showValue;
+@end

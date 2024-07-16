@@ -6,6 +6,11 @@
 "TouchColor" = "触摸颜色";
 "BorderColor" = "边框颜色";
 
+"AnimationDuration" = "Animation duration";
+"TouchSize" = "Touch size";
+"CornerRadius" = "Corner radius";
+"BorderWidth" = "Border width";
+
 "ResetSettings" = "重置设置";
 
 "FollowMe" = "在推特上关注我";

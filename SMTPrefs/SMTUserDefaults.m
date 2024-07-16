@@ -28,6 +28,10 @@ static NSString *const kDefaultsSuiteName = @"com.dvntm.showmytouches";
         @"enabled": @YES,
         @"touchColor": touchColorData,
         @"borderColor": borderColorData,
+        @"duration": @0.3,
+        @"touchSize": @40,
+        @"touchRadius": @20,
+        @"borderWidth": @3.0
     }];
 }
 

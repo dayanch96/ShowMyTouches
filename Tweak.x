@@ -38,13 +38,17 @@ BOOL isRecording(void) {
                     NSData *borderData = [[SMTUserDefaults standardUserDefaults] objectForKey:@"borderColor"];
                     UIColor *borderColor = [NSKeyedUnarchiver unarchivedObjectOfClass:[UIColor class] fromData:borderData error:nil];
 
-                    touchView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
+                    CGFloat size = [[SMTUserDefaults standardUserDefaults] floatForKey:@"touchSize"];
+                    CGFloat cornerRadius = [[SMTUserDefaults standardUserDefaults] floatForKey:@"touchRadius"];
+                    CGFloat borderWidth = [[SMTUserDefaults standardUserDefaults] floatForKey:@"borderWidth"];
+
+                    touchView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, size, size)];
                     touchView.center = CGPointMake(touchPoint.x, touchPoint.y);
                     touchView.backgroundColor = touchColor;
-                    touchView.layer.cornerRadius = 20;
+                    touchView.layer.cornerRadius = cornerRadius;
                     touchView.layer.borderColor = borderColor.CGColor;
-                    touchView.layer.borderWidth = 3.0;
-                    touchView.clipsToBounds = YES;
+                    touchView.layer.borderWidth = borderWidth;
+                    touchView.clipsToBounds = (size / 2) <= cornerRadius;
                     touchView.userInteractionEnabled = NO;
 
                     dispatch_async(dispatch_get_main_queue(), ^{
@@ -70,7 +74,8 @@ BOOL isRecording(void) {
                     if (touch.tapCount > 1) {
                         [touchView removeFromSuperview];
                     } else {
-                        [UIView animateWithDuration:0.3 delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+                        CGFloat duration = [[SMTUserDefaults standardUserDefaults] floatForKey:@"duration"];
+                        [UIView animateWithDuration:duration delay:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
                             touchView.alpha = 0.0;
                             touchView.transform = CGAffineTransformMakeScale(1.5, 1.5);
                         } completion:^(BOOL finished) {

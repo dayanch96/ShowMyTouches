@@ -3,8 +3,13 @@
 "OnlyRecording" = "Только для записи";
 "OnlyRecordingDesc" = "Отображает касания только во время записи экрана";
 
-"TouchColor" = "Цвет касаний";
+"TouchColor" = "Цвет касания";
 "BorderColor" = "Цвет рамки";
+
+"AnimationDuration" = "Длительность анимации";
+"TouchSize" = "Размер касания";
+"CornerRadius" = "Радиус угла";
+"BorderWidth" = "Ширина рамки";
 
 "ResetSettings" = "Сбросить настройки";
 

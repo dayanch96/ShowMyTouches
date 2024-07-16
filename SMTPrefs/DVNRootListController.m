@@ -12,6 +12,10 @@
     NSArray *_sections;
     NSArray *_main;
     NSArray *_color;
+    NSArray *_duration;
+    NSArray *_size;
+    NSArray *_radius;
+    NSArray *_bwidth;
     NSArray *_reset;
     NSArray *_developer;
 }
@@ -31,8 +35,24 @@
             @{@"title": @"BorderColor", @"icon": @"circle", @"type": @"colorpicker", @"key": @"borderColor", @"id": @"colorCell"}
         ];
 
+        _duration = @[
+            @{@"type": @"slider", @"min": @0, @"max": @3, @"divider": @0.1, @"key": @"duration", @"id": @"durationCell"}
+        ];
+
+        _size = @[
+            @{@"type": @"slider", @"min": @20, @"max": @60, @"divider": @1, @"key": @"touchSize", @"id": @"touchSizeCell"}
+        ];
+
+        _radius = @[
+            @{@"type": @"slider", @"min": @0, @"max": @30, @"divider": @1, @"key": @"touchRadius", @"id": @"touchRadiusCell"}
+        ];
+
+        _bwidth = @[
+            @{@"type": @"slider", @"min": @0, @"max": @10, @"divider": @0.1, @"key": @"borderWidth", @"id": @"borderWidthCell"}
+        ];
+
         _reset = @[
-            @{@"title": @"ResetSettings", @"icon": @"trash", @"type": @"reset", @"key": @"reset", @"id": @"resetCell"},
+            @{@"title": @"ResetSettings", @"icon": @"trash",@"type": @"reset", @"key": @"reset", @"id": @"resetCell"},
         ];
 
         _developer = @[
@@ -42,7 +62,7 @@
             @{@"title": @"Support", @"desc": @"Donate.KoFi", @"icon": @"kofi", @"type": @"link", @"key": @"https://ko-fi.com/dayanch96", @"id": @"devCell"}
         ];
 
-        _sections = @[_main, _color, _reset, _developer];
+        _sections = @[_main, _color, _duration, _size, _radius, _bwidth, _reset, _developer];
     }
 
     return self;
@@ -89,6 +109,27 @@
     }
 }
 
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    NSString *header;
+    if (section == [_sections indexOfObject:_duration]) {
+        header = @"AnimationDuration";
+    }
+
+    if (section == [_sections indexOfObject:_size]) {
+        header = @"TouchSize";
+    }
+
+    if (section == [_sections indexOfObject:_radius]) {
+        header = @"CornerRadius";
+    }
+
+    if (section == [_sections indexOfObject:_bwidth]) {
+        header = @"BorderWidth";
+    }
+
+    return LOC(header);
+}
+
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
     return section == _sections.count - 1 ? @"v1.0" : nil;
 }
@@ -106,8 +147,10 @@
 
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:data[@"id"]];
 
-        cell.textLabel.text = LOC(data[@"title"]);
-        cell.textLabel.adjustsFontSizeToFitWidth = YES;
+        if (data[@"title"]) {
+            cell.textLabel.text = LOC(data[@"title"]);
+            cell.textLabel.adjustsFontSizeToFitWidth = YES;
+        }
 
         if (data[@"desc"]) {
             cell.detailTextLabel.text = LOC(data[@"desc"]);
@@ -131,6 +174,17 @@
             colorWell.tag = TAG_FOR_INDEX_PATH(indexPath.section, indexPath.row);
 
             cell.accessoryView = colorWell;
+        }
+
+        if ([data[@"type"] isEqualToString:@"slider"]) {
+            UISlider *slider = [self sliderWithKey:data[@"key"] min:[data[@"min"] floatValue] max:[data[@"max"] floatValue]];
+            slider.tag = TAG_FOR_INDEX_PATH(indexPath.section, indexPath.row);
+
+            [cell.contentView addSubview:slider];
+
+            [slider.leadingAnchor constraintEqualToAnchor:cell.contentView.layoutMarginsGuide.leadingAnchor constant:5.0].active = YES;
+            [slider.trailingAnchor constraintEqualToAnchor:cell.contentView.layoutMarginsGuide.trailingAnchor constant:-5.0].active = YES;
+            [slider.centerYAnchor constraintEqualToAnchor:cell.contentView.layoutMarginsGuide.centerYAnchor].active = YES;
         }
 
         if ([data[@"type"] isEqualToString:@"reset"]) {
@@ -180,6 +234,22 @@
     [colorWell addTarget:self action:@selector(colorWellTap:) forControlEvents:UIControlEventValueChanged];
 
     return colorWell;
+}
+
+- (UISlider *)sliderWithKey:(NSString *)key min:(CGFloat)min max:(CGFloat)max {
+    UISlider *slider = [[UISlider alloc] init];
+    slider.minimumValue = min;
+    slider.maximumValue = max;
+    slider.value = [[SMTUserDefaults standardUserDefaults] floatForKey:key];
+    slider.translatesAutoresizingMaskIntoConstraints = NO;
+
+    [slider setShowValue:YES];
+    [slider setThumbImage:[UIImage imageNamed:@"thumb" inBundle:NSBundle.smt_defaultBundle compatibleWithTraitCollection:nil] forState:UIControlStateNormal];
+    [slider addTarget:self action:@selector(sliderValueChanged:) forControlEvents:UIControlEventValueChanged];
+
+    [slider.heightAnchor constraintEqualToConstant:30.0].active = YES;
+    
+    return slider;
 }
 
 #pragma mark - UITableViewDelegate
@@ -248,6 +318,25 @@
         NSData *colorData = [NSKeyedArchiver archivedDataWithRootObject:sender.selectedColor requiringSecureCoding:NO error:nil];
         [[SMTUserDefaults standardUserDefaults] setObject:colorData forKey:data[@"key"]];
     }
+}
+
+- (void)sliderValueChanged:(UISlider *)sender {
+    NSInteger tag = sender.tag;
+    NSInteger section = SECTION_FROM_TAG(tag);
+    NSInteger row = ROW_FROM_TAG(tag);
+
+    NSDictionary *data = _sections[section][row];
+
+    if (data) {
+        sender.value = round(sender.value / [data[@"divider"] floatValue]) * [data[@"divider"] floatValue];
+        [[SMTUserDefaults standardUserDefaults] setFloat:sender.value forKey:data[@"key"]];
+    }
+
+    //     CGFloat val = 
+    // self.tapBwSliderValue = round(slider.value / 5.0) * 5;
+    // [[NSUserDefaults standardUserDefaults] setFloat:self.tapBwSliderValue forKey:@"tapBwSliderValue"];
+
+    // valueLabel.text = [NSString stringWithFormat:LOC(@"Seconds"), (long)self.tapBwSliderValue];
 }
 
 @end
