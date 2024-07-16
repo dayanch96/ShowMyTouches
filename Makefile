@@ -10,7 +10,7 @@ endif
 DEBUG = 0
 FINALPACKAGE = 1
 TARGET := iphone:clang:latest:14.0
-PACKAGE_VERSION = 1.0
+PACKAGE_VERSION = 1.1
 INSTALL_TARGET_PROCESSES = SpringBoard
 
 include $(THEOS)/makefiles/common.mk

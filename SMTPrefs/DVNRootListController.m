@@ -131,7 +131,7 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
-    return section == _sections.count - 1 ? @"v1.0" : nil;
+    return section == _sections.count - 1 ? @"v1.1" : nil;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -331,12 +331,6 @@
         sender.value = round(sender.value / [data[@"divider"] floatValue]) * [data[@"divider"] floatValue];
         [[SMTUserDefaults standardUserDefaults] setFloat:sender.value forKey:data[@"key"]];
     }
-
-    //     CGFloat val = 
-    // self.tapBwSliderValue = round(slider.value / 5.0) * 5;
-    // [[NSUserDefaults standardUserDefaults] setFloat:self.tapBwSliderValue forKey:@"tapBwSliderValue"];
-
-    // valueLabel.text = [NSString stringWithFormat:LOC(@"Seconds"), (long)self.tapBwSliderValue];
 }
 
 @end
