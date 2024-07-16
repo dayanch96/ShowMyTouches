@@ -6,10 +6,10 @@
 "TouchColor" = "触摸颜色";
 "BorderColor" = "边框颜色";
 
-"AnimationDuration" = "Animation duration";
-"TouchSize" = "Touch size";
-"CornerRadius" = "Corner radius";
-"BorderWidth" = "Border width";
+"AnimationDuration" = "动画持续时间";
+"TouchSize" = "触摸尺寸";
+"CornerRadius" = "圆角半径";
+"BorderWidth" = "边框宽度";
 
 "ResetSettings" = "重置设置";
 
@@ -19,5 +19,5 @@
 "TipJar" = "Tip jar";
 "Donate.PayPal" = "通过 PayPal 向我捐赠";
 
-"Support" = "Support me";
+"Support" = "支持我";
 "Donate.KoFi" = "请我喝杯咖啡";
