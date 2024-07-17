@@ -36,19 +36,19 @@
         ];
 
         _duration = @[
-            @{@"type": @"slider", @"min": @0, @"max": @3, @"divider": @0.1, @"key": @"duration", @"id": @"durationCell"}
+            @{@"type": @"slider", @"min": @0, @"max": @3, @"divider": @0.1, @"key": @"duration", @"id": @"durationCell", @"style": @(UITableViewCellStyleValue1)}
         ];
 
         _size = @[
-            @{@"type": @"slider", @"min": @20, @"max": @60, @"divider": @1, @"key": @"touchSize", @"id": @"touchSizeCell"}
+            @{@"type": @"slider", @"min": @20, @"max": @60, @"divider": @1, @"key": @"touchSize", @"id": @"touchSizeCell", @"style": @(UITableViewCellStyleValue1)}
         ];
 
         _radius = @[
-            @{@"type": @"slider", @"min": @0, @"max": @30, @"divider": @1, @"key": @"touchRadius", @"id": @"touchRadiusCell"}
+            @{@"type": @"slider", @"min": @0, @"max": @30, @"divider": @1, @"key": @"touchRadius", @"id": @"touchRadiusCell", @"style": @(UITableViewCellStyleValue1)}
         ];
 
         _bwidth = @[
-            @{@"type": @"slider", @"min": @0, @"max": @10, @"divider": @0.1, @"key": @"borderWidth", @"id": @"borderWidthCell"}
+            @{@"type": @"slider", @"min": @0, @"max": @10, @"divider": @0.1, @"key": @"borderWidth", @"id": @"borderWidthCell", @"style": @(UITableViewCellStyleValue1)}
         ];
 
         _reset = @[
@@ -145,7 +145,7 @@
         NSArray *settingsData = _sections[indexPath.section];
         NSDictionary *data = settingsData[indexPath.row];
 
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:data[@"id"]];
+        cell = [[UITableViewCell alloc] initWithStyle:[data[@"style"] integerValue] ?: UITableViewCellStyleSubtitle reuseIdentifier:data[@"id"]];
 
         if (data[@"title"]) {
             cell.textLabel.text = LOC(data[@"title"]);
@@ -180,10 +180,16 @@
             UISlider *slider = [self sliderWithKey:data[@"key"] min:[data[@"min"] floatValue] max:[data[@"max"] floatValue]];
             slider.tag = TAG_FOR_INDEX_PATH(indexPath.section, indexPath.row);
 
+            if (slider.value == (NSInteger)slider.value) {
+                cell.detailTextLabel.text = [NSString stringWithFormat:@"%ld", (NSInteger)slider.value];
+            } else {
+                cell.detailTextLabel.text = [NSString stringWithFormat:@"%.2f", slider.value];
+            }
+
             [cell.contentView addSubview:slider];
 
             [slider.leadingAnchor constraintEqualToAnchor:cell.contentView.layoutMarginsGuide.leadingAnchor constant:5.0].active = YES;
-            [slider.trailingAnchor constraintEqualToAnchor:cell.contentView.layoutMarginsGuide.trailingAnchor constant:-5.0].active = YES;
+            [slider.trailingAnchor constraintEqualToAnchor:cell.contentView.layoutMarginsGuide.trailingAnchor constant:-50.0].active = YES;
             [slider.centerYAnchor constraintEqualToAnchor:cell.contentView.layoutMarginsGuide.centerYAnchor].active = YES;
         }
 
@@ -243,7 +249,7 @@
     slider.value = [[SMTUserDefaults standardUserDefaults] floatForKey:key];
     slider.translatesAutoresizingMaskIntoConstraints = NO;
 
-    [slider setShowValue:YES];
+    // [slider setShowValue:YES];
     [slider setThumbImage:[UIImage imageNamed:@"thumb" inBundle:NSBundle.smt_defaultBundle compatibleWithTraitCollection:nil] forState:UIControlStateNormal];
     [slider addTarget:self action:@selector(sliderValueChanged:) forControlEvents:UIControlEventValueChanged];
 
@@ -330,6 +336,15 @@
     if (data) {
         sender.value = round(sender.value / [data[@"divider"] floatValue]) * [data[@"divider"] floatValue];
         [[SMTUserDefaults standardUserDefaults] setFloat:sender.value forKey:data[@"key"]];
+
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:section];
+        UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+
+        if (sender.value == (NSInteger)sender.value) {
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"%ld", (NSInteger)sender.value];
+        } else {
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"%.2f", sender.value];
+        }
     }
 }
 
