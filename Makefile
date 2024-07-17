@@ -2,6 +2,8 @@ ifeq ($(ROOTLESS),1)
 THEOS_DEVICE_IP = 192.168.1.8
 THEOS_DEVICE_PORT = 22
 THEOS_PACKAGE_SCHEME = rootless
+else ifeq ($(ROOTHIDE),1)
+THEOS_PACKAGE_SCHEME = roothide
 else
 THEOS_DEVICE_IP = 192.168.1.9
 THEOS_DEVICE_PORT = 22
@@ -10,7 +12,7 @@ endif
 DEBUG = 0
 FINALPACKAGE = 1
 TARGET := iphone:clang:latest:14.0
-PACKAGE_VERSION = 1.1.1
+PACKAGE_VERSION = 1.1.2
 INSTALL_TARGET_PROCESSES = SpringBoard
 
 include $(THEOS)/makefiles/common.mk
