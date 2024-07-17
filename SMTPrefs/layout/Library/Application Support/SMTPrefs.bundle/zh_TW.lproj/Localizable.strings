@@ -1,0 +1,23 @@
+"Enable" = "啟用";
+
+"OnlyRecording" = "僅在錄製時顯示";
+"OnlyRecordingDesc" = ""僅在進行螢幕錄製時顯示觸控指示器";
+
+"TouchColor" = "觸控顏色";
+"BorderColor" = "邊框顏色";
+
+"AnimationDuration" = "動畫持續時間";
+"TouchSize" = "觸控大小";
+"CornerRadius" = "圓角半徑";
+"BorderWidth" = "邊框寬度";
+
+"ResetSettings" = "重置設定為預設值";
+
+"FollowMe" = "在 X（Twitter）上跟隨我";
+"SourceCode" = "原始碼";
+
+"TipJar" = "小費罐";
+"Donate.PayPal" = "透過 PayPal 捐贈 <3";
+
+"Support" = "支持我";
+"Donate.KoFi" = "請我喝杯咖啡 <3";
