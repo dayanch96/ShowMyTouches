@@ -8,7 +8,7 @@
 
     dispatch_once(&onceToken, ^{
         NSString *tweakBundlePath = [[NSBundle mainBundle] pathForResource:@"SMTPrefs" ofType:@"bundle"];
-        NSString *rootlessBundlePath = ROOT_PATH_NS(@"/Library/Application Support/SMTPrefs.bundle");
+        NSString *rootlessBundlePath = jbroot(@"/Library/Application Support/SMTPrefs.bundle");
 
         bundle = [NSBundle bundleWithPath:tweakBundlePath ?: rootlessBundlePath];
     });

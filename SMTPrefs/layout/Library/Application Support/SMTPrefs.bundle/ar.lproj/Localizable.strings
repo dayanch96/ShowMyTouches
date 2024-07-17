@@ -1,0 +1,23 @@
+"Enable" = "تفعيل";
+
+"OnlyRecording" = "فقط للتسجيل";
+"OnlyRecordingDesc" = "يعرض مؤشرات اللمس فقط أثناء تسجيل الشاشة";
+
+"TouchColor" = "لون اللمس";
+"BorderColor" = "لون الحافة";
+
+"AnimationDuration" = "مدة التحريك";
+"TouchSize" = "حجم اللمس";
+"CornerRadius" = "نصف قطر الزاوية";
+"BorderWidth" = "عرض الحدود";
+
+"ResetSettings" = "إعادة تعيين الإعدادات إلى الافتراضيات";
+
+"FollowMe" = "تابعني على تويتر";
+"SourceCode" = "السورس كود";
+
+"TipJar" = "علبة الإكراميات";
+"Donate.PayPal" = "تبرع لي عبر PayPal";
+
+"Support" = "ادعمني";
+"Donate.KoFi" = "اشتر لي كوبًا من القهوة";
