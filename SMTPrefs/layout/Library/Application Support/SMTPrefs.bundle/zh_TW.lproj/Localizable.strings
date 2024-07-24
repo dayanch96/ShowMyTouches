@@ -1,7 +1,7 @@
 "Enable" = "啟用";
 
 "OnlyRecording" = "僅在錄製時顯示";
-"OnlyRecordingDesc" = ""僅在進行螢幕錄製時顯示觸控指示器";
+"OnlyRecordingDesc" = "僅在進行螢幕錄製時顯示觸控指示器";
 
 "TouchColor" = "觸控顏色";
 "BorderColor" = "邊框顏色";
