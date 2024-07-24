@@ -101,12 +101,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (section < _sections.count) {
-        NSArray *currentSection = _sections[section];
-        return currentSection.count;
-    } else {
-        return 0;
-    }
+    return [_sections[section] count];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
