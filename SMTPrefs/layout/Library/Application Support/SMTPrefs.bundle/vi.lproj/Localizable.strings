@@ -1,0 +1,23 @@
+"Enable" = "Bật/Tắt";
+
+"OnlyRecording" = "Chỉ để ghi ";
+"OnlyRecordingDesc" = "Chỉ hiển thị các chỉ báo cảm ứng trong khi ghi màn hình";
+
+"TouchColor" = "Màu sắc cảm ứng";
+"BorderColor" = "Màu viền";
+
+"AnimationDuration" = "Thời lượng hoạt hình";
+"TouchSize" = "Kích thước cảm ứng";
+"CornerRadius" = "Bán kính góc";
+"BorderWidth" = "Chiều rộng đường viền";
+
+"ResetSettings" = "Đặt lại tất cả cài đặt";
+
+"FollowMe" = "Theo dõi tôi trên Twitter";
+"SourceCode" = "Mã nguồn";
+
+"TipJar" = "Tip jar";
+"Donate.PayPal" = "Ủng hộ tôi qua PayPal <3";
+
+"Support" = "Ủng hộ tôi";
+"Donate.KoFi" = "Mua cho tôi một ly cà phê <3";
