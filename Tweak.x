@@ -1,6 +1,8 @@
 #import <UIKit/UIKit.h>
 #import "SMTPrefs/SMTUserDefaults.h"
 
+#define kTouchViewKey @selector(ShowMyTouches_TouchView)
+
 BOOL isRecording(void) {
     for (UIScreen *screen in [UIScreen screens]) {
         if ([screen isCaptured]) {
@@ -55,12 +57,12 @@ BOOL isRecording(void) {
                         [touch.window addSubview:touchView];
                     });
 
-                    objc_setAssociatedObject(touch, @"TouchView", touchView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+                    objc_setAssociatedObject(touch, kTouchViewKey, touchView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
                 }
             }
 
             if (touch.phase == UITouchPhaseMoved) {
-                touchView = objc_getAssociatedObject(touch, @"TouchView");
+                touchView = objc_getAssociatedObject(touch, kTouchViewKey);
                 if (touchView) {
                     dispatch_async(dispatch_get_main_queue(), ^{
                         touchView.center = CGPointMake(touchPoint.x, touchPoint.y);
@@ -69,7 +71,7 @@ BOOL isRecording(void) {
             }
 
             if (touch.phase == UITouchPhaseEnded || touch.phase == UITouchPhaseCancelled) {
-                touchView = objc_getAssociatedObject(touch, @"TouchView");
+                touchView = objc_getAssociatedObject(touch, kTouchViewKey);
                 if (touchView) {
                     if (touch.tapCount > 1) {
                         [touchView removeFromSuperview];
@@ -82,7 +84,7 @@ BOOL isRecording(void) {
                             [touchView removeFromSuperview];
                         }];
                     }
-                    objc_setAssociatedObject(touch, @"TouchView", nil, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+                    objc_setAssociatedObject(touch, kTouchViewKey, nil, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
                 }
             }
         }
