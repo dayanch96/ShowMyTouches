@@ -3,15 +3,11 @@
 
 #define kTouchViewKey @selector(ShowMyTouches_TouchView)
 
-BOOL isRecording(void) {
-    for (UIScreen *screen in [UIScreen screens]) {
-        if ([screen isCaptured]) {
-            return YES;
-        }
-    }
+@interface RPScreenRecorder : NSObject
+- (BOOL)isRecording;
 
-    return NO;
-}
++ (instancetype)sharedRecorder;
+@end
 
 %hook UIApplication
 - (void)sendEvent:(UIEvent *)event {
@@ -21,7 +17,7 @@ BOOL isRecording(void) {
         return;
     }
 
-    if (smtBool(@"recording") && !isRecording()) {
+    if (smtBool(@"recording") && ![[%c(RPScreenRecorder) sharedRecorder] isRecording]) {
         return;
     }
 

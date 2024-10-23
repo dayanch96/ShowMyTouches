@@ -126,7 +126,7 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
-    return section == _sections.count - 1 ? @"v1.1.2" : nil;
+    return section == _sections.count - 1 ? @"v1.1.3" : nil;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
