@@ -62,6 +62,25 @@
                 if (touchView) {
                     dispatch_async(dispatch_get_main_queue(), ^{
                         touchView.center = CGPointMake(touchPoint.x, touchPoint.y);
+
+                        NSData *touchData = [[SMTUserDefaults standardUserDefaults] objectForKey:@"touchColor"];
+                        UIColor *trailColor = [NSKeyedUnarchiver unarchivedObjectOfClass:[UIColor class] fromData:touchData error:nil];
+                        CGFloat size = [[SMTUserDefaults standardUserDefaults] floatForKey:@"touchSize"] * 0.5;
+
+                        UIView *trailView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, size, size)];
+                        trailView.center = CGPointMake(touchPoint.x, touchPoint.y);
+                        trailView.backgroundColor = trailColor;
+                        trailView.layer.cornerRadius = size / 2.0;
+                        trailView.userInteractionEnabled = NO;
+
+                        [touch.window addSubview:trailView];
+
+                        [UIView animateWithDuration:0.5 animations:^{
+                            trailView.alpha = 0.0;
+                            trailView.transform = CGAffineTransformMakeScale(0.2, 0.2);
+                        } completion:^(BOOL finished) {
+                            [trailView removeFromSuperview];
+                        }];
                     });
                 }
             }
