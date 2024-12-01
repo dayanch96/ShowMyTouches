@@ -1,9 +1,11 @@
-Package: com.dvntm.showmytouches
-Name: ShowMyTouches
+Package: com.sini921.showmytouches
+Name: ShowMyTouches【rootless】
 Version: 0.0.1
 Architecture: iphoneos-arm
-Description: Displays your touch interactions!
+Description: 触摸轨迹插件。根据开源代码重新编译，增加跟踪效果。
+icon: https://sini921.github.io/repo/sileodepiction/icon/showmytouches.png
+Sileodepiction: https://sini921.github.io/repo/sileodepiction/showmytouches/js.json
 Maintainer: dvntm
-Author: dvntm
-Section: Tweaks
+Author: dvntm & Sini921
+Section: 越狱插件
 Depends: mobilesubstrate (>= 0.9.5000)

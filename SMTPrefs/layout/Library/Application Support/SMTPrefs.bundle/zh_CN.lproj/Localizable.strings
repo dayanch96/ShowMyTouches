@@ -1,23 +1,20 @@
-"Enable" = "功能启用";
-
-"OnlyRecording" = "仅录屏显示";
-"OnlyRecordingDesc" = "仅在屏幕录制期间显示触摸指示器。";
-
-"TouchColor" = "触摸颜色";
-"BorderColor" = "边框颜色";
-
-"AnimationDuration" = "动画持续时间";
-"TouchSize" = "触摸尺寸";
-"CornerRadius" = "圆角半径";
-"BorderWidth" = "边框宽度";
-
-"ResetSettings" = "重置设置";
-
-"FollowMe" = "在推特上关注我";
-"SourceCode" = "源代码";
-
-"TipJar" = "小费罐";
-"Donate.PayPal" = "通过 PayPal 向我捐赠";
-
-"Support" = "支持我";
-"Donate.KoFi" = "请我喝杯咖啡";
+{
+    AnimationDuration = "\U52a8\U753b\U6301\U7eed\U65f6\U95f4";
+    BorderColor = "\U8fb9\U6846\U989c\U8272";
+    BorderWidth = "\U8fb9\U6846\U5bbd\U5ea6";
+    CornerRadius = "\U5706\U89d2\U534a\U5f84";
+    "Donate.KoFi" = "\U8bf7\U6211\U559d\U676f\U5496\U5561";
+    "Donate.PayPal" = "\U901a\U8fc7 PayPal \U5411\U6211\U6350\U8d60";
+    Enable = "\U529f\U80fd\U542f\U7528";
+    FollowMe = "\U5728\U63a8\U7279\U4e0a\U5173\U6ce8\U6211";
+    OnlyRecording = "\U4ec5\U5f55\U5c4f\U663e\U793a";
+    OnlyRecordingDesc = "\U4ec5\U5728\U5c4f\U5e55\U5f55\U5236\U671f\U95f4\U663e\U793a\U89e6\U6478\U6307\U793a\U5668\U3002";
+    ResetSettings = "\U91cd\U7f6e\U8bbe\U7f6e";
+    Sini921 = "@\U601d\U5ff5\U53d8\U6210\U6d77\U7f16\U8bd1";
+    SourceCode = "\U6e90\U4ee3\U7801";
+    Support = "\U652f\U6301\U6211";
+    TipJar = "\U5c0f\U8d39\U7f50";
+    TouchColor = "\U89e6\U6478\U989c\U8272";
+    TouchSize = "\U89e6\U6478\U5c3a\U5bf8";
+    jbrepo = "\Ud83c\Udde8\Ud83c\Uddf3\U5b63\U4f2f\U4e4b\U5bb6\U6e90";
+}

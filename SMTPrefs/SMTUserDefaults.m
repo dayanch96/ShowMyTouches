@@ -2,7 +2,7 @@
 
 @implementation SMTUserDefaults
 
-static NSString *const kDefaultsSuiteName = @"com.dvntm.showmytouches";
+static NSString *const kDefaultsSuiteName = @"com.sini921.showmytouches";
 
 + (SMTUserDefaults *)standardUserDefaults {
     static dispatch_once_t onceToken;
@@ -28,9 +28,9 @@ static NSString *const kDefaultsSuiteName = @"com.dvntm.showmytouches";
         @"enabled": @YES,
         @"touchColor": touchColorData,
         @"borderColor": borderColorData,
-        @"duration": @0.3,
-        @"touchSize": @40,
-        @"touchRadius": @20,
+        @"duration": @0.0,
+        @"touchSize": @30,
+        @"touchRadius": @15,
         @"borderWidth": @3.0
     }];
 }

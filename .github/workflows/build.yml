@@ -1,0 +1,48 @@
+name: Theos CI
+
+on:
+  # push:
+  # pull_request:
+  workflow_dispatch:
+jobs:
+  build:
+
+    runs-on: macos-14
+
+    steps:
+    - uses: actions/checkout@main
+
+    - name: Checkout theos/theos
+      uses: actions/checkout@main
+      with:
+        repository: roothide/theos
+        ref: master
+        submodules: recursive
+        path: theos
+
+    - name: Checkout theos/sdks
+      uses: actions/checkout@main
+      with:
+        repository: theos/sdks
+        ref: master
+        sparse-checkout: iPhoneOS16.5.sdk
+        path: theos/sdks
+
+    - name: Ensure main utils are installed
+      uses: dhinakg/procursus-action@main
+      with:
+        packages: coreutils make xz ldid
+          
+    - name: Build
+      run: |
+        export THEOS=theos
+        
+        # gmake package FINALPACKAGE=1
+        gmake package FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=rootless
+        # gmake package FINALPACKAGE=1 THEOS_PACKAGE_SCHEME=roothide
+
+    - name: Upload packages
+      uses: actions/upload-artifact@main
+      with:
+        name: packages
+        path: packages/*.deb
