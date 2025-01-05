@@ -49,6 +49,13 @@
                     touchView.clipsToBounds = (size / 2) <= cornerRadius;
                     touchView.userInteractionEnabled = NO;
 
+                    if (smtBool(@"luminescence")) {
+                        touchView.layer.shadowColor = borderColor.CGColor;
+                        touchView.layer.shadowOpacity = 0.8;
+                        touchView.layer.shadowRadius = 8.0;
+                        touchView.layer.shadowOffset = CGSizeMake(0, 0);
+                    }
+
                     dispatch_async(dispatch_get_main_queue(), ^{
                         [touch.window addSubview:touchView];
                     });
@@ -62,6 +69,39 @@
                 if (touchView) {
                     dispatch_async(dispatch_get_main_queue(), ^{
                         touchView.center = CGPointMake(touchPoint.x, touchPoint.y);
+
+                        if (!smtBool(@"Swipetrajectory")) {
+                            return;
+                        }
+
+                        NSData *touchData = [[SMTUserDefaults standardUserDefaults] objectForKey:@"touchColor"];
+                        UIColor *trailColor = [NSKeyedUnarchiver unarchivedObjectOfClass:[UIColor class] fromData:touchData error:nil];
+                        CGFloat size = [[SMTUserDefaults standardUserDefaults] floatForKey:@"touchSize"] * 1;
+
+                        UIView *trailView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, size, size)];
+                        trailView.center = CGPointMake(touchPoint.x, touchPoint.y);
+                        trailView.backgroundColor = trailColor;
+                        trailView.layer.cornerRadius = size / 2.0;
+                        trailView.userInteractionEnabled = NO;
+
+                        trailView.layer.borderColor = touchView.layer.borderColor;
+                        trailView.layer.borderWidth = touchView.layer.borderWidth;
+
+                        if (smtBool(@"luminescence")) {
+                            trailView.layer.shadowColor = touchView.layer.borderColor;
+                            trailView.layer.shadowOpacity = 0.8;
+                            trailView.layer.shadowRadius = 8.0;
+                            trailView.layer.shadowOffset = CGSizeMake(0, 0);
+                        }
+
+                        [touch.window addSubview:trailView];
+
+                        [UIView animateWithDuration:0.5 animations:^{
+                            trailView.alpha = 0.0;
+                            trailView.transform = CGAffineTransformMakeScale(0.2, 0.2);
+                        } completion:^(BOOL finished) {
+                            [trailView removeFromSuperview];
+                        }];
                     });
                 }
             }

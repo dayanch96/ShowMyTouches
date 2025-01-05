@@ -26,8 +26,10 @@
 
     if (self) {
         _main = @[
-            @{@"title": @"Enable", @"icon": @"power", @"type": @"bool", @"key": @"enable", @"id": @"mainCell"},
-            @{@"title": @"OnlyRecording", @"desc": @"OnlyRecordingDesc", @"icon": @"record.circle", @"type": @"bool", @"key": @"recording", @"id": @"mainCell"}
+            @{@"title": @"Enable", @"desc": @"EnableShowMyTouches", @"icon": @"power", @"type": @"bool", @"key": @"enable", @"id": @"mainCell"},
+            @{@"title": @"OnlyRecording", @"desc": @"OnlyRecordingDesc", @"icon": @"record.circle", @"type": @"bool", @"key": @"recording", @"id": @"mainCell"},
+            @{@"title": @"Swipetrajectory", @"desc": @"EnableSwipetrajectory", @"icon": @"hand.draw", @"type": @"bool", @"key": @"Swipetrajectory", @"id": @"mainCell"},
+            @{@"title": @"luminescence", @"desc": @"Enableluminescence", @"icon": @"livephoto", @"type": @"bool", @"key": @"luminescence", @"id": @"mainCell"},
         ];
 
         _color = @[
@@ -126,7 +128,7 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
-    return section == _sections.count - 1 ? @"v1.1.3" : nil;
+    return section == _sections.count - 1 ? @"v1.2.0" : nil;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
