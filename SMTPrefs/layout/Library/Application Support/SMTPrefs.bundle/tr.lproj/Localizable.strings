@@ -3,8 +3,29 @@
 "OnlyRecording" = "Yalnızca kayıt için";
 "OnlyRecordingDesc" = "Dokunmatik göstergeleri yalnızca ekran kaydı sırasında görüntüler";
 
+"OpenSettings" = "Ayarları açma";
+"FourFingerDoubleTap" = "Dört parmakla çift dokunma";
+"ThreeFingerHold" = "Üç parmakla basılı tutma";
+"Shake" = "Sallama";
+"KeepOneWayToOpenSettings" = "Ayarları açmanın en az bir yolu açık kalmalı";
+"OK" = "Tamam";
+
+"Effects" = "Efektler";
+"Morph" = "Morf";
+"MorphDesc" = "Dokunma parmağınızın arkasında esner ve yay gibi geri döner";
+"Comet" = "Kuyruklu yıldız";
+"CometDesc" = "Parmağınızın arkasında kayan yıldız gibi sönen bir iz bırakır";
+
 "TouchColor" = "Dokunmatik rengi";
 "BorderColor" = "Sınır rengi";
+
+"TouchImage" = "Görsel";
+"UseImage" = "Görsel kullan";
+"UseImageDesc" = "Dokunma yerine görselinizi gösterir. Morf görsellere uygulanmaz";
+"ChooseImage" = "Görsel seç";
+"ChooseFromPhotos" = "Fotoğraflar'dan seç";
+"RemoveImage" = "Görseli kaldır";
+"Cancel" = "Vazgeç";
 
 "AnimationDuration" = "Animasyon süresi";
 "TouchSize" = "Dokunma boyutu";
@@ -15,10 +36,6 @@
 
 "FollowMe" = "Beni Twitter'da takip edin";
 "SourceCode" = "Kaynak kodu";
-
-"TipJar" = "Bahşiş kavanozu";
-"Donate.PayPal" = "PayPal aracılığıyla bana bağış yap <3";
-
-"Support" = "Beni destekle";
-"Donate.KoFi" = "Bana bir fincan kahve al <3";
-
+"Donate.Boosty" = "Beni Boosty'de destekle ❤️";
+"BuyMeACoffee" = "Bana bir kahve ısmarla";
+"Donate.BMC" = "Tek seferlik bir kahve bahşişi ❤️";

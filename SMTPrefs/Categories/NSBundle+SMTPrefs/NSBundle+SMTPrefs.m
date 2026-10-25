@@ -1,4 +1,4 @@
-#import "NSBundle+SMTPrefs.h"
+#import <NSBundle+SMTPrefs/NSBundle+SMTPrefs.h>
 
 @implementation NSBundle (ShowMyTouches)
 

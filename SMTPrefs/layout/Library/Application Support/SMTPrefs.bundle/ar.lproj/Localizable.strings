@@ -3,8 +3,29 @@
 "OnlyRecording" = "فقط للتسجيل";
 "OnlyRecordingDesc" = "يعرض مؤشرات اللمس فقط أثناء تسجيل الشاشة";
 
+"OpenSettings" = "فتح الإعدادات";
+"FourFingerDoubleTap" = "نقرتان بأربعة أصابع";
+"ThreeFingerHold" = "ضغط مطوّل بثلاثة أصابع";
+"Shake" = "الهز";
+"KeepOneWayToOpenSettings" = "يجب أن تبقى طريقة واحدة على الأقل لفتح الإعدادات مفعّلة";
+"OK" = "حسنًا";
+
+"Effects" = "التأثيرات";
+"Morph" = "التحوّل";
+"MorphDesc" = "تتمدد اللمسة خلف إصبعك وترتد كالنابض";
+"Comet" = "مذنّب";
+"CometDesc" = "يترك أثرًا يتلاشى خلف إصبعك مثل شهاب";
+
 "TouchColor" = "لون اللمس";
 "BorderColor" = "لون الحافة";
+
+"TouchImage" = "صورة";
+"UseImage" = "استخدام صورة";
+"UseImageDesc" = "يعرض صورتك بدلًا من مؤشر اللمس. لا ينطبق التحوّل على الصور";
+"ChooseImage" = "اختيار صورة";
+"ChooseFromPhotos" = "اختيار من الصور";
+"RemoveImage" = "إزالة الصورة";
+"Cancel" = "إلغاء";
 
 "AnimationDuration" = "مدة التحريك";
 "TouchSize" = "حجم اللمس";
@@ -15,9 +36,6 @@
 
 "FollowMe" = "تابعني على تويتر";
 "SourceCode" = "السورس كود";
-
-"TipJar" = "علبة الإكراميات";
-"Donate.PayPal" = "تبرع لي عبر PayPal";
-
-"Support" = "ادعمني";
-"Donate.KoFi" = "اشتر لي كوبًا من القهوة";
+"Donate.Boosty" = "ادعمني على Boosty ❤️";
+"BuyMeACoffee" = "اشترِ لي قهوة";
+"Donate.BMC" = "إكرامية قهوة لمرة واحدة ❤️";

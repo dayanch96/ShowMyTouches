@@ -3,8 +3,29 @@
 "OnlyRecording" = "Hiển thị chế độ ghi màn hình";
 "OnlyRecordingDesc" = "Hiển thị báo cảm ứng trong quá trình ghi màn hình";
 
+"OpenSettings" = "Mở cài đặt";
+"FourFingerDoubleTap" = "Chạm hai lần bằng bốn ngón";
+"ThreeFingerHold" = "Giữ bằng ba ngón";
+"Shake" = "Lắc";
+"KeepOneWayToOpenSettings" = "Phải bật ít nhất một cách để mở cài đặt";
+"OK" = "OK";
+
+"Effects" = "Hiệu ứng";
+"Morph" = "Biến hình";
+"MorphDesc" = "Điểm chạm co giãn theo ngón tay và nảy trở lại";
+"Comet" = "Sao chổi";
+"CometDesc" = "Để lại vệt mờ dần sau ngón tay như sao băng";
+
 "TouchColor" = "Màu cảm ứng";
 "BorderColor" = "Màu viền";
+
+"TouchImage" = "Hình ảnh";
+"UseImage" = "Dùng hình ảnh";
+"UseImageDesc" = "Hiển thị hình ảnh của bạn thay cho điểm chạm. Biến hình không áp dụng cho hình ảnh";
+"ChooseImage" = "Chọn hình ảnh";
+"ChooseFromPhotos" = "Chọn từ Ảnh";
+"RemoveImage" = "Xóa hình ảnh";
+"Cancel" = "Hủy";
 
 "AnimationDuration" = "Thời gian hoạt ảnh";
 "TouchSize" = "Kích thước cảm ứng";
@@ -15,9 +36,6 @@
 
 "FollowMe" = "Theo dõi tôi trên Twitter";
 "SourceCode" = "Mã nguồn";
-
-"TipJar" = "Tiền Boa";
-"Donate.PayPal" = "Ủng hộ tôi qua PayPal <3";
-
-"Support" = "Hỗ trợ tôi";
-"Donate.KoFi" = "Mua cho tôi một tách cà phê <3";
+"Donate.Boosty" = "Ủng hộ tôi trên Boosty ❤️";
+"BuyMeACoffee" = "Mời tôi một ly cà phê";
+"Donate.BMC" = "Ủng hộ một lần bằng ly cà phê ❤️";

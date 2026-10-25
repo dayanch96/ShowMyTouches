@@ -1,0 +1,111 @@
+{
+    "minVersion": "0.1",
+    "headerImage": "https://raw.githubusercontent.com/dayanch96/ShowMyTouches/refs/heads/main/Resources/header.png",
+    "class": "DepictionTabView",
+    "tintColor": "#BF80E6",
+    "tabs": [
+        {
+            "views": [
+                {
+                    "class": "DepictionSubheaderView",
+                    "useBottomMargin": false,
+                    "title": "ShowMyTouches",
+                    "useBoldText": true
+                },
+                {
+                    "useSpacing": true,
+                    "class": "DepictionMarkdownView",
+                    "markdown": "Displays visual indicators for touch interactions on the screen"
+                },
+                {
+                    "spacing": 8,
+                    "class": "DepictionSpacerView"
+                },
+                {
+                    "screenshots": [
+                        {
+                            "accessibilityText": "Settings",
+                            "url": "https://raw.githubusercontent.com/dayanch96/ShowMyTouches/refs/heads/main/Resources/1_settings.png"
+                        },
+                        {
+                            "accessibilityText": "Multitouch with a custom image",
+                            "url": "https://raw.githubusercontent.com/dayanch96/ShowMyTouches/refs/heads/main/Resources/2_multitouch_custom.png"
+                        },
+                        {
+                            "accessibilityText": "Morph",
+                            "url": "https://raw.githubusercontent.com/dayanch96/ShowMyTouches/refs/heads/main/Resources/3_morph.png"
+                        },
+                        {
+                            "accessibilityText": "Comet",
+                            "url": "https://raw.githubusercontent.com/dayanch96/ShowMyTouches/refs/heads/main/Resources/4_comet.png"
+                        }
+                    ],
+                    "itemSize": "{160, 346.280193236715}",
+                    "class": "DepictionScreenshotsView",
+                    "itemCornerRadius": 6
+                },
+                {
+                    "markdown": "### Features:\n- Displaying interactions always or during screen recording only\n- Multitouch\n- Indicators never get in the way: taps pass straight through, so fast typing on the keyboard works as usual\n- Effects, which can be combined:\n  - **Morph**: the touch flows behind your finger like a liquid drop and gathers back when it stops\n  - **Comet**: a fading trail behind your finger, like a shooting star\n- Idle breathing: a resting touch gently grows and shrinks\n- Custom image instead of the touch, picked from Photos\n- Color picker for the touch and its border\n- Display configuration: animation duration, touch size, corner radius and border width\n- Rootful, Rootless and Roothide jailbreaks\n\n*ShowMyTouches preferences can be found in the iOS Settings, does not require respring*",
+                    "class": "DepictionMarkdownView",
+                    "useBottomMargin": false,
+                    "title": "markdown-description",
+                    "useBoldText": true
+                },
+                {
+                    "class": "DepictionSeparatorView"
+                },
+                {
+                    "spacing": 8,
+                    "class": "DepictionSpacerView"
+                },
+                {
+                    "text": "dayanch96",
+                    "class": "DepictionTableTextView",
+                    "title": "Developer"
+                },
+                {
+                    "spacing": 8,
+                    "class": "DepictionSpacerView"
+                }
+            ],
+            "class": "DepictionStackView",
+            "tabname": "Details"
+        },
+        {
+            "views": [
+                {
+                    "text": "Oct 25, 2026",
+                    "class": "DepictionTableTextView",
+                    "title": "Version 2.0"
+                },
+                {
+                    "markdown": "- Taps are no longer swallowed while a touch indicator is fading out, fast typing on the keyboard works as usual\n- New **Morph** effect: the touch flows behind your finger like a liquid drop, respects the corner radius and rounds into a bubble when pulled\n- New **Comet** effect: a fading trail behind your finger, like a shooting star\n- Idle breathing: a resting touch gently grows and shrinks\n- Custom image instead of the touch, picked from Photos and resized to fit 180×180 px with its proportions kept\n- Smoother tracking on fast swipes and ProMotion displays\n- New Effects and Image sections in settings\n- The app version is now shown in settings automatically\n- Fixed the Ko-fi caption in Russian\n- Support links moved to Boosty and Buy me a coffee",
+                    "class": "DepictionMarkdownView"
+                }
+            ],
+            "class": "DepictionStackView",
+            "tabname": "Changelog"
+        },
+        {
+            "views": [
+                {
+                    "class": "DepictionTableButtonView",
+                    "title": "My Twitter (X)",
+                    "action": "https://x.com/dayanch96"
+                },
+                {
+                    "class": "DepictionTableButtonView",
+                    "title": "My Boosty",
+                    "action": "https://boosty.to/dayanch96"
+                },
+                {
+                    "class": "DepictionTableButtonView",
+                    "title": "Buy me a coffee",
+                    "action": "https://buymeacoffee.com/dayanch96"
+                }
+            ],
+            "class": "DepictionStackView",
+            "tabname": "Support"
+        }
+    ]
+}

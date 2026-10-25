@@ -3,8 +3,29 @@
 "OnlyRecording" = "Only for recording";
 "OnlyRecordingDesc" = "Displays touch indicators only during screen recording";
 
+"OpenSettings" = "Open settings";
+"FourFingerDoubleTap" = "Double tap with four fingers";
+"ThreeFingerHold" = "Hold with three fingers";
+"Shake" = "Shake";
+"KeepOneWayToOpenSettings" = "At least one way to open settings has to stay on";
+"OK" = "OK";
+
+"Effects" = "Effects";
+"Morph" = "Morph";
+"MorphDesc" = "Touch stretches behind your finger and springs back";
+"Comet" = "Comet";
+"CometDesc" = "Leaves a fading trail behind your finger like a shooting star";
+
 "TouchColor" = "Touch color";
 "BorderColor" = "Border color";
+
+"TouchImage" = "Image";
+"UseImage" = "Use image";
+"UseImageDesc" = "Shows your image instead of the touch. Morph doesn't apply to images";
+"ChooseImage" = "Choose image";
+"ChooseFromPhotos" = "Choose from Photos";
+"RemoveImage" = "Remove image";
+"Cancel" = "Cancel";
 
 "AnimationDuration" = "Animation duration";
 "TouchSize" = "Touch size";
@@ -15,9 +36,6 @@
 
 "FollowMe" = "Follow me on Twitter";
 "SourceCode" = "Source code";
-
-"TipJar" = "Tip jar";
-"Donate.PayPal" = "Donate me via PayPal <3";
-
-"Support" = "Support me";
-"Donate.KoFi" = "Buy me a cup of coffee <3";
+"Donate.Boosty" = "Support me on Boosty ❤️";
+"BuyMeACoffee" = "Buy me a coffee";
+"Donate.BMC" = "A one-time coffee tip ❤️";

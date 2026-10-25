@@ -1,24 +1,22 @@
+#if SIDELOADING
+#import <UIKit/UIKit.h>
+#else
 #import <Preferences/PSViewController.h>
-#import "NSBundle+SMTPrefs.h"
-#import "SMTUserDefaults.h"
+#endif
+#import <PhotosUI/PhotosUI.h>
+#import <Private/UISwitch+Private.h>
+#import <Private/UIColorWell+Private.h>
+#import <Private/UISlider+Private.h>
+#import <NSBundle+SMTPrefs/NSBundle+SMTPrefs.h>
+#import <NSString+SMTPrefs/NSString+SMTPrefs.h>
+#import <SMTUserDefaults/SMTUserDefaults.h>
 
-@interface DVNRootListController : PSViewController <UITableViewDelegate, UITableViewDataSource> 
+#if SIDELOADING
+@interface DVNRootListController : UIViewController <UITableViewDelegate, UITableViewDataSource, PHPickerViewControllerDelegate>
+#else
+@interface DVNRootListController : PSViewController <UITableViewDelegate, UITableViewDataSource, PHPickerViewControllerDelegate>
+#endif
+
 @property (nonatomic, strong) UITableView *tableView;
-@end
 
-@interface UISwitchVisualElement : UIView
-@property (nonatomic, assign) BOOL showsOnOffLabel;
-@end
-
-@interface UISwitch (Private)
-@property (nonatomic, strong) UISwitchVisualElement *visualElement;
-@end
-
-@interface UIColorWell (Private)
-- (void)styleRequestedColorPickerPresentation;
-- (void)invokeColorPicker:(id)colorPicker;
-@end
-
-@interface UISlider (Private)
-- (void)setShowValue:(BOOL)showValue;
 @end

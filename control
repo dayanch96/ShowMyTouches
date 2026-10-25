@@ -7,3 +7,5 @@ Maintainer: dvntm
 Author: dvntm
 Section: Tweaks
 Depends: mobilesubstrate (>= 0.9.5000)
+Icon: https://raw.githubusercontent.com/dayanch96/ShowMyTouches/refs/heads/main/Resources/icon.png
+SileoDepiction: https://raw.githubusercontent.com/dayanch96/ShowMyTouches/main/Resources/depiction.json

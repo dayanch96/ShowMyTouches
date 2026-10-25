@@ -3,8 +3,29 @@
 "OnlyRecording" = "仅录屏显示";
 "OnlyRecordingDesc" = "仅在屏幕录制期间显示触摸指示器。";
 
+"OpenSettings" = "打开设置";
+"FourFingerDoubleTap" = "四指轻点两下";
+"ThreeFingerHold" = "三指长按";
+"Shake" = "摇动";
+"KeepOneWayToOpenSettings" = "至少需要保留一种打开设置的方式";
+"OK" = "好";
+
+"Effects" = "效果";
+"Morph" = "形变";
+"MorphDesc" = "触摸点随手指拉伸并弹性回弹";
+"Comet" = "彗星";
+"CometDesc" = "在手指后方留下如流星般渐隐的轨迹";
+
 "TouchColor" = "触摸颜色";
 "BorderColor" = "边框颜色";
+
+"TouchImage" = "图片";
+"UseImage" = "使用图片";
+"UseImageDesc" = "以你的图片代替触摸指示。形变不适用于图片";
+"ChooseImage" = "选择图片";
+"ChooseFromPhotos" = "从照片中选择";
+"RemoveImage" = "移除图片";
+"Cancel" = "取消";
 
 "AnimationDuration" = "动画持续时间";
 "TouchSize" = "触摸尺寸";
@@ -15,9 +36,6 @@
 
 "FollowMe" = "在推特上关注我";
 "SourceCode" = "源代码";
-
-"TipJar" = "小费罐";
-"Donate.PayPal" = "通过 PayPal 向我捐赠";
-
-"Support" = "支持我";
-"Donate.KoFi" = "请我喝杯咖啡";
+"Donate.Boosty" = "在 Boosty 上支持我 ❤️";
+"BuyMeACoffee" = "请我喝杯咖啡";
+"Donate.BMC" = "一次性的咖啡打赏 ❤️";

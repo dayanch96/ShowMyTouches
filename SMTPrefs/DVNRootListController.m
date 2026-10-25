@@ -1,8 +1,6 @@
 #import <Foundation/Foundation.h>
 #import "DVNRootListController.h"
 
-#define LOC(key) [NSBundle.smt_defaultBundle localizedStringForKey:key value:nil table:nil]
-
 #define TAG_FOR_INDEX_PATH(section, row) ((section << 16) | (row & 0xFFFF))
 #define SECTION_FROM_TAG(tag) (tag >> 16)
 #define ROW_FROM_TAG(tag) (tag & 0xFFFF)
@@ -11,7 +9,12 @@
 {
     NSArray *_sections;
     NSArray *_main;
+#if SIDELOADING
+    NSArray *_access;
+#endif
+    NSArray *_effects;
     NSArray *_color;
+    NSArray *_image;
     NSArray *_duration;
     NSArray *_size;
     NSArray *_radius;
@@ -30,9 +33,27 @@
             @{@"title": @"OnlyRecording", @"desc": @"OnlyRecordingDesc", @"icon": @"record.circle", @"type": @"bool", @"key": @"recording", @"id": @"mainCell"}
         ];
 
+#if SIDELOADING
+        _access = @[
+            @{@"title": @"FourFingerDoubleTap", @"icon": @"hand.raised", @"type": @"bool", @"key": @"openFourFingerTap", @"id": @"mainCell"},
+            @{@"title": @"ThreeFingerHold", @"icon": @"hand.point.up.left", @"type": @"bool", @"key": @"openThreeFingerHold", @"id": @"mainCell"},
+            @{@"title": @"Shake", @"icon": @"iphone.radiowaves.left.and.right", @"type": @"bool", @"key": @"openShake", @"id": @"mainCell"}
+        ];
+#endif
+
+        _effects = @[
+            @{@"title": @"Morph", @"desc": @"MorphDesc", @"icon": @"drop", @"type": @"bool", @"key": @"morph", @"id": @"mainCell"},
+            @{@"title": @"Comet", @"desc": @"CometDesc", @"icon": @"sparkles", @"type": @"bool", @"key": @"comet", @"id": @"mainCell"}
+        ];
+
         _color = @[
             @{@"title": @"TouchColor", @"icon": @"hand.tap", @"type": @"colorpicker", @"key": @"touchColor", @"id": @"colorCell"},
             @{@"title": @"BorderColor", @"icon": @"circle", @"type": @"colorpicker", @"key": @"borderColor", @"id": @"colorCell"}
+        ];
+
+        _image = @[
+            @{@"title": @"UseImage", @"desc": @"UseImageDesc", @"icon": @"photo", @"type": @"bool", @"key": @"useImage", @"id": @"mainCell"},
+            @{@"title": @"ChooseImage", @"icon": @"photo.on.rectangle", @"type": @"image", @"key": @"touchImage", @"id": @"imageCell"}
         ];
 
         _duration = @[
@@ -58,11 +79,15 @@
         _developer = @[
             @{@"title": @"Dayanch96", @"desc": @"FollowMe", @"icon": @"dvn", @"type": @"link", @"key": @"https://twitter.com/dayanch96", @"id": @"devCell"},
             @{@"title": @"Github", @"desc": @"SourceCode", @"icon": @"github", @"type": @"link", @"key": @"https://github.com/dayanch96/ShowMyTouches", @"id": @"devCell"},
-            @{@"title": @"TipJar", @"desc": @"Donate.PayPal", @"icon": @"paypal", @"type": @"link", @"key": @"https://paypal.me/dayanch96", @"id": @"devCell"},
-            @{@"title": @"Support", @"desc": @"Donate.KoFi", @"icon": @"kofi", @"type": @"link", @"key": @"https://ko-fi.com/dayanch96", @"id": @"devCell"}
+            @{@"title": @"Boosty", @"desc": @"Donate.Boosty", @"icon": @"boosty", @"type": @"link", @"key": @"https://boosty.to/dayanch96", @"id": @"devCell"},
+            @{@"title": @"BuyMeACoffee", @"desc": @"Donate.BMC", @"icon": @"bmc", @"type": @"link", @"key": @"https://buymeacoffee.com/dayanch96", @"id": @"devCell"}
         ];
 
-        _sections = @[_main, _color, _duration, _size, _radius, _bwidth, _reset, _developer];
+#if SIDELOADING
+        _sections = @[_main, _access, _effects, _color, _image, _duration, _size, _radius, _bwidth, _reset, _developer];
+#else
+        _sections = @[_main, _effects, _color, _image, _duration, _size, _radius, _bwidth, _reset, _developer];
+#endif
     }
 
     return self;
@@ -91,7 +116,6 @@
     ]];
 }
 
-#pragma mark - Table view stuff
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return UITableViewAutomaticDimension;
 }
@@ -106,6 +130,21 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     NSString *header;
+
+#if SIDELOADING
+    if (section == [_sections indexOfObject:_access]) {
+        header = @"OpenSettings";
+    }
+#endif
+
+    if (section == [_sections indexOfObject:_effects]) {
+        header = @"Effects";
+    }
+
+    if (section == [_sections indexOfObject:_image]) {
+        header = @"TouchImage";
+    }
+
     if (section == [_sections indexOfObject:_duration]) {
         header = @"AnimationDuration";
     }
@@ -122,11 +161,11 @@
         header = @"BorderWidth";
     }
 
-    return LOC(header);
+    return [header smt_localized];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
-    return section == _sections.count - 1 ? @"v1.1.3" : nil;
+    return section == _sections.count - 1 ? @"v" PACKAGE_VERSION : nil;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -143,12 +182,12 @@
         cell = [[UITableViewCell alloc] initWithStyle:[data[@"style"] integerValue] ?: UITableViewCellStyleSubtitle reuseIdentifier:data[@"id"]];
 
         if (data[@"title"]) {
-            cell.textLabel.text = LOC(data[@"title"]);
+            cell.textLabel.text = [data[@"title"] smt_localized];
             cell.textLabel.adjustsFontSizeToFitWidth = YES;
         }
 
         if (data[@"desc"]) {
-            cell.detailTextLabel.text = LOC(data[@"desc"]);
+            cell.detailTextLabel.text = [data[@"desc"] smt_localized];
             cell.detailTextLabel.textColor = [UIColor secondaryLabelColor];
             cell.detailTextLabel.numberOfLines = 0;
         }
@@ -165,10 +204,15 @@
         if ([data[@"type"] isEqualToString:@"colorpicker"]) {
             cell.imageView.image = [UIImage systemImageNamed:data[@"icon"]];
 
-            UIColorWell *colorWell = [self colorWellForKey:data[@"key"] title:LOC(data[@"title"])];
+            UIColorWell *colorWell = [self colorWellForKey:data[@"key"] title:[data[@"title"] smt_localized]];
             colorWell.tag = TAG_FOR_INDEX_PATH(indexPath.section, indexPath.row);
 
             cell.accessoryView = colorWell;
+        }
+
+        if ([data[@"type"] isEqualToString:@"image"]) {
+            cell.imageView.image = [UIImage systemImageNamed:data[@"icon"]];
+            cell.accessoryView = [self touchImagePreview];
         }
 
         if ([data[@"type"] isEqualToString:@"slider"]) {
@@ -224,8 +268,7 @@
 }
 
 - (UIColorWell *)colorWellForKey:(NSString *)key title:(NSString *)title {
-    NSData *colorData = [[SMTUserDefaults standardUserDefaults] objectForKey:key];
-    UIColor *color = [NSKeyedUnarchiver unarchivedObjectOfClass:[UIColor class] fromData:colorData error:nil];
+    UIColor *color = [[SMTUserDefaults standardUserDefaults] colorForKey:key];
 
     UIColorWell *colorWell = [[UIColorWell alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
     colorWell.title = title;
@@ -253,7 +296,6 @@
     return slider;
 }
 
-#pragma mark - UITableViewDelegate
 - (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath {
     return YES;
 }
@@ -281,6 +323,10 @@
         }
     }
 
+    if ([data[@"type"] isEqualToString:@"image"]) {
+        [self chooseTouchImageFromCell:[tableView cellForRowAtIndexPath:indexPath]];
+    }
+
     if ([data[@"type"] isEqualToString:@"reset"]) {
         [SMTUserDefaults resetUserDefaults];
         [tableView reloadData];
@@ -304,9 +350,39 @@
 
     NSDictionary *data = _sections[section][row];
     if (data) {
+#if SIDELOADING
+        if (!sender.isOn && [self isLastOpenSettingsKey:data[@"key"]]) {
+            [sender setOn:YES animated:YES];
+            [self showKeepOneOpenMethodAlert];
+            return;
+        }
+
+#endif
         [[SMTUserDefaults standardUserDefaults] setBool:sender.isOn forKey:data[@"key"]];
     }
 }
+
+#if SIDELOADING
+#pragma mark - Settings access
+
+- (BOOL)isLastOpenSettingsKey:(NSString *)key {
+    NSArray<NSString *> *keys = SMTUserDefaults.openSettingsKeys;
+    if (![keys containsObject:key]) return NO;
+
+    for (NSString *other in keys) {
+        if (![other isEqualToString:key] && smtBool(other)) return NO;
+    }
+
+    return YES;
+}
+
+- (void)showKeepOneOpenMethodAlert {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:[@"KeepOneWayToOpenSettings" smt_localized] preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:[@"OK" smt_localized] style:UIAlertActionStyleDefault handler:nil]];
+
+    [self presentViewController:alert animated:YES completion:nil];
+}
+#endif
 
 - (void)colorWellTap:(UIColorWell *)sender {
     NSInteger tag = sender.tag;
@@ -316,8 +392,7 @@
     NSDictionary *data = _sections[section][row];
 
     if (data) {
-        NSData *colorData = [NSKeyedArchiver archivedDataWithRootObject:sender.selectedColor requiringSecureCoding:NO error:nil];
-        [[SMTUserDefaults standardUserDefaults] setObject:colorData forKey:data[@"key"]];
+        [[SMTUserDefaults standardUserDefaults] setColor:sender.selectedColor forKey:data[@"key"]];
     }
 }
 
@@ -341,6 +416,76 @@
             cell.detailTextLabel.text = [NSString stringWithFormat:@"%.2f", sender.value];
         }
     }
+}
+
+- (UIView *)touchImagePreview {
+    UIImageView *preview = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 34, 34)];
+    UIImage *image = [SMTUserDefaults standardUserDefaults].touchImage;
+
+    preview.image = image ?: [UIImage systemImageNamed:@"plus.circle"];
+    preview.contentMode = image ? UIViewContentModeScaleAspectFit : UIViewContentModeCenter;
+    preview.tintColor = [UIColor tertiaryLabelColor];
+
+    return preview;
+}
+
+- (void)chooseTouchImageFromCell:(UITableViewCell *)cell {
+    if (![SMTUserDefaults standardUserDefaults].touchImage) {
+        [self presentImagePicker];
+        return;
+    }
+
+    UIAlertController *sheet = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    [sheet addAction:[UIAlertAction actionWithTitle:[@"ChooseFromPhotos" smt_localized] style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        [self presentImagePicker];
+    }]];
+    [sheet addAction:[UIAlertAction actionWithTitle:[@"RemoveImage" smt_localized] style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
+        [self saveTouchImage:nil];
+    }]];
+    [sheet addAction:[UIAlertAction actionWithTitle:[@"Cancel" smt_localized] style:UIAlertActionStyleCancel handler:nil]];
+
+    sheet.popoverPresentationController.sourceView = cell;
+    sheet.popoverPresentationController.sourceRect = cell.bounds;
+
+    [self presentViewController:sheet animated:YES completion:nil];
+}
+
+- (void)presentImagePicker {
+    PHPickerConfiguration *configuration = [[PHPickerConfiguration alloc] init];
+    configuration.filter = [PHPickerFilter imagesFilter];
+    configuration.selectionLimit = 1;
+
+    PHPickerViewController *picker = [[PHPickerViewController alloc] initWithConfiguration:configuration];
+    picker.delegate = self;
+
+    [self presentViewController:picker animated:YES completion:nil];
+}
+
+- (void)picker:(PHPickerViewController *)picker didFinishPicking:(NSArray<PHPickerResult *> *)results {
+    [picker dismissViewControllerAnimated:YES completion:nil];
+
+    NSItemProvider *provider = results.firstObject.itemProvider;
+    if (![provider canLoadObjectOfClass:[UIImage class]]) {
+        return;
+    }
+
+    [provider loadObjectOfClass:[UIImage class] completionHandler:^(id<NSItemProviderReading> object, NSError *error) {
+        if ([object isKindOfClass:[UIImage class]]) {
+            [self saveTouchImage:(UIImage *)object];
+        }
+    }];
+}
+
+- (void)saveTouchImage:(UIImage *)image {
+    dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0), ^{
+        SMTUserDefaults *defaults = [SMTUserDefaults standardUserDefaults];
+        defaults.touchImage = image;
+        [defaults setBool:image != nil forKey:@"useImage"];
+
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:[self->_sections indexOfObject:self->_image]] withRowAnimation:UITableViewRowAnimationNone];
+        });
+    });
 }
 
 @end
